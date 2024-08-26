@@ -23,3 +23,25 @@ const twoSum = (nums, target) => {
         }
     }
 }
+
+// 8.26
+const twoSum = (nums, target) => {
+    //create new array
+    const arr = []
+    //create new map of nums and their indices
+    const map = new Map()
+    //loop through nums
+    for (let i = 0; i < nums.length; i++) {
+        map.set(nums[i], i)
+    }
+    //for each value
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i]
+
+        if (map.has(complement) && i != map.get(complement)) {
+            arr.push(i)
+            arr.push(map.get(complement))
+            return arr
+        }
+    }
+}
