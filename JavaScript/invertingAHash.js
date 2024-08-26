@@ -9,3 +9,12 @@ function invertHash(hash) {
 }
 
 console.log(invertHash({ a: "1", b: "2", c: "3" }));
+
+// 8.26
+const invertHash = (hash) => {
+  const newMap = {}
+  for(key in hash) {
+    newMap[hash[key]] = key
+  }
+  return newMap
+}
