@@ -20,3 +20,17 @@ fun invertMap(hash: Map<Any, Any>): Map<Any, Any> {
     }
     return newMap
 }
+
+//8.26
+
+fun invertHash(hash: Map<Any, Any>): Map<Any, Any> {
+    //create new map
+    val newMap = mutableMapOf<Any, Any>()
+    //loop through current hash
+    for((k, v) in hash){
+       //set values as keys from current hash into new hash 
+       newMap.set(v, k)
+    }
+    //return new map
+    return newMap
+}
