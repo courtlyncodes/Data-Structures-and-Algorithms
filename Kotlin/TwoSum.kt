@@ -39,10 +39,9 @@ class Solution {
                     arr.add(i)
                     arr.add(map.getValue(complement))
                     return arr.toIntArray()
-            }
-                    
-                } 
-                 return arr.toIntArray()
-            }
-        }
+            }   
+        } 
+        return arr.toIntArray()
+    }
+}
       
