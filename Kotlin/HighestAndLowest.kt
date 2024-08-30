@@ -14,3 +14,11 @@ fun highAndLow(numbers: String): String {
 
     return "${high} ${low}"
 }
+
+
+// codewars example solution
+fun highAndLow(numbers: String): String
+{
+	val x = numbers.split(" ").map { it.toInt() }.sorted()
+	return "${x.last()} ${x.first()}"
+}
