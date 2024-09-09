@@ -1,4 +1,4 @@
-// 9.9
+//9.9
 class MyQueue() {
 
     private var popping = ArrayDeque<Int>()
