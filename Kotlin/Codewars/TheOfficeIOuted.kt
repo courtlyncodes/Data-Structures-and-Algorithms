@@ -14,4 +14,4 @@ fun outed(meet: Map<String, Int>, boss: String): String {
 }
 
 // Optimal
-fun outed(meet: Map<String, Int>, boss: String) = if((meet.values + meet[boss]!!).average <=5 ) "Get Out Now!" else "Nice Work Champ!"
+fun outed(meet: Map<String, Int>, boss: String) = if((meet.values + meet[boss]!!).average() <=5 ) "Get Out Now!" else "Nice Work Champ!"
