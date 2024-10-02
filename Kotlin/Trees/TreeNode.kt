@@ -26,6 +26,23 @@ class TreeNode(val data: Any?) {
         }
     }
 
+    fun depthFirstTraversal() {
+        println(data)
+        children.forEach {
+            it.depthFirstTraversal()
+        }
+    }
+
+    fun breadthFirstTraversal() {
+        var queue: MutableList<TreeNode> = mutableListOf()
+        queue.add(this)
+        while(queue.isNotEmpty()) {
+            val current = queue.removeFirst()
+            prinln(current.data)
+            queue.addAll(current.children)
+        }
+    }
+
     override fun toString(): String {
         return "TreeNode(data=$data, children=$children)"
     }
