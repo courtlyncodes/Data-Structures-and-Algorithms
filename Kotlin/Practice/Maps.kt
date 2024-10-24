@@ -42,11 +42,81 @@ removing.remove(14)
 removing.put(14, 15)
 
 // 11. Merge Maps: Create two maps with string keys and integer values. Write a function that merges them into one map, summing the values for duplicate keys. Return the resulting map.
+fun merge(): Map<String, Int> {
+    val mapOne = mapOf("Apple" to 5, "Orange" to 6, "Apple" to 6, "Avocado" to 7, "Squash" to 5, "Broccoli" to 8)
+    val mapTwo = mapOf("Apple" to 7, "Kiwi" to 4, "Strawberry" to 10, "Banana" to 8, "Raspberry" to 9, "Coconut" to 7)
+
+    var mergedMap = mutableMapOf<String, Int>()
+
+    for((k, v) in mapOne) {
+        if(!mergedMap.containsKey(k)) {
+            mergedMap[k] = v
+        } else {
+            mergedMap[k] += v
+        }
+    }
+
+    for((k, v) in mapTwo) {
+        if(!mergedMap.containsKey(k)) {
+            mergedMap[k] = v
+        } else {
+            mergedMap[k] += v
+        }
+    }
+
+    return mergedMap
+}
 
 // 12. Filter Map by Value: Create a map with string keys and integer values. Write a function that returns a new map containing only the entries with values greater than a specified threshold.
+fun greatest(i: Int): HashMap<String, Int> {
+    val mapOne = mapOf("Apple" to 5, "Banana" to 6, "Cucumber" to 8, "Dragonfruit" to 11, "Eggplant" to 8, "Fig" to 3, "Grapes" to 6, "Horseradish" to 11)
+
+    // var mapTwo = mutableMapOf<String, Int>()
+
+    // for((k, v) in mapOne) {
+    //     if(v > i){
+    //         mapTwo.set(k, v)
+    //     }
+    // }
+    // return mapTwo.toHashMap()
+
+   return HashMap(mapOne.filter { (k, v) -> v > i })
+}
 
 // 13. Get All Keys: Create a map with keys as countries and values as their populations. Write a function that returns a list of countries with populations above a certain number.
+fun countries(p: Int): List<String> {
+    val countryMap = mapOf("United States" to 35873849, "Canada" to 48737433, "Spain" to 487939478, "France" to 39483987, "Italy" to 394783974, "Jamaica" to 34398573, "Nigeria" to 398473974)
+
+    val newMap = countryMap.filter{ (k, v) -> v > p }
+
+    return (newMap.keys).toList()
+
+}
 
 // 14. Invert Map: Create a map where keys are names and values are ages. Write a function that returns a new map where the keys and values are inverted (ages become keys and names become values).
+fun invert(): HashMap<Int, String> {
+    val mapOne = mapOf("Courtlyn" to 34, "Arderian" to 32, "Sheila" to 61, "Robert" to 64, "Jada" to 24, "Jasmine" to 28, "KJ" to 14)
+
+    var mapTwo = mutableMapOf<Int, String>()
+
+    for((k, v) in mapOne) {
+        mapTwo[v] = k
+    }
+    return mapTwo
+}
 
 // 15. Count Key Lengths: Create a map with string keys and string values. Write a function that returns a new map where the keys are the lengths of the original keys, and the values are lists of the original keys that have that length.
+fun countKeyLengths(): HashMap<Int, List> {
+    val strings = mapOf("Atlanta" to "Georgia", "Chicago" to "Illinois", "Mobile" to "Alabama", "Washington" to "DC", "New York" to "New York", "Seattle" to "Washington", "Orlando" to "Florida", "Portland" to "Oregon" )
+
+    var newMap = mutableMapOf<Int,MutableList<String>>()
+
+    for((k, v) in strings) {
+        if(!newMap.contains(k.length)){
+            newMap.set(k.length, mutableListOf())
+        } 
+        newMap[k.length]?.add(k)
+    }
+    
+    return newMap.toHashMap()
+}
