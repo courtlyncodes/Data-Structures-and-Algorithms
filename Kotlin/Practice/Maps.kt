@@ -40,3 +40,13 @@ println(months["February"])
 var removing = hashMapOf(10 to 11, 12 to 13, 14 to 16)
 removing.remove(14)
 removing.put(14, 15)
+
+// 11. Merge Maps: Create two maps with string keys and integer values. Write a function that merges them into one map, summing the values for duplicate keys. Return the resulting map.
+
+// 12. Filter Map by Value: Create a map with string keys and integer values. Write a function that returns a new map containing only the entries with values greater than a specified threshold.
+
+// 13. Get All Keys: Create a map with keys as countries and values as their populations. Write a function that returns a list of countries with populations above a certain number.
+
+// 14. Invert Map: Create a map where keys are names and values are ages. Write a function that returns a new map where the keys and values are inverted (ages become keys and names become values).
+
+// 15. Count Key Lengths: Create a map with string keys and string values. Write a function that returns a new map where the keys are the lengths of the original keys, and the values are lists of the original keys that have that length.

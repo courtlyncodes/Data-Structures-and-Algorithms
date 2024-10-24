@@ -48,3 +48,62 @@ println(numbers.reversed())
 var strings = listOf("Nia", "Chanel", "Imani", "Naiari", "Nayla")
 val sortedStrings = strings.sorted() 
 println(sortedStrings)  
+
+
+// 11. Sum of Even Numbers: Create a list of integers from 1 to 100. Write a function that returns the sum of all even numbers in the list.
+// should return 2550
+fun returnEvenSum(): Int {
+    var integers = mutableListOf<Int>()
+    var sum = 0
+
+    for(i in 1..100) {
+        integers.add(i)
+    }
+
+    for(int in integers) {
+        if(int % 2 == 0) {
+            sum += int
+        }
+    }
+    return sum 
+}
+
+
+// 12. Find Maximum: Create a list of floating-point numbers. Write a function that returns the maximum value in the list.
+// rounding
+fun returnMax(): Double {
+    // create the immutable list of doubles with at least 3 values unordered
+    val floatingNumbers = listOf(17.99, 18.50, 12.59, 34.99, 25.99, 29.99, 5.99, 11.99, 8.00, 11.99)
+    // creating a storage variable holds the current max
+    var max = floatingNumbers[0] // 17.99
+    // loop through the FPN in the list comparing the current number to the number after it
+    for(f in floatingNumbers) {
+        if(f > max) { 
+            // whichever number is higher would be stored as the current max
+            max = f
+        }
+    }
+   return max
+}
+
+// 13. Count Occurrences: Create a list of strings. Write a function that takes a string as input and returns the number of times it appears in the list.
+fun countOccurances(s: String): Int {
+    val strings = listOf("Mary", "Mary", "Mary", "Megan", "Mary", "Missy", "Mariah")
+    var count = 0
+
+    return strings.count { it == s }
+}
+
+// 14. Remove Duplicates: Create a list of integers with some duplicates. Write a function that returns a new list containing only unique integers.
+fun removeDupes(): List<Int> {
+    val integers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 6, 5, 5, 6, 7, 3, 2)
+
+    return integers.distinct()
+}
+
+// 15. Sort in Descending Order: Create a list of random integers. Write a function that returns a sorted list in descending order.
+fun sort(): List<Int> {
+    val integers = listOf(10, 500, 60, 75, 643, 58, 5365, 6, 729, 36, 24)
+
+    return integers.sortedDescending()
+}
