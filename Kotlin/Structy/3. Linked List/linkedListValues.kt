@@ -1,4 +1,4 @@
-class Node(val value: Int) {
+class Node(val value: Any) {
     var next: Node? = null
 }
 
@@ -6,8 +6,8 @@ class Node(val value: Int) {
 // The function should return an array containing all values of the nodes in the linked list.
 
 
-fun linkedListValues(head: Node?): List<Int> {
-   var list = mutableListOf<Int>()
+fun linkedListValues(head: Node?): List<Any> {
+   var list = mutableListOf<Any>()
    
    var current = head
    
@@ -19,21 +19,33 @@ fun linkedListValues(head: Node?): List<Int> {
 }
 
  fun main() {
-   // Create linked list: 1 -> 2 -> 3 -> null
-   val head = Node(1)
-   head.next = Node(2)
-   head.next?.next = Node(3)
+   // First test: a -> b -> c -> d
+   val a = Node("a")
+   val b = Node("b")
+   val c = Node("c")
+   val d = Node("d")
+   a.next = b
+   b.next = c
+   c.next = d
 
-   // Expected output
-   val expected = listOf(1, 2, 3)
+   val result1 = linkedListValues(a)
+   println("Test 1 Result: $result1") // Should print: [a, b, c, d]
 
-   // Run the function
-   val result = linkedListValues(head)
+   // Second test: x -> y
+   val x = Node("x")
+   val y = Node("y")
+   x.next = y
 
-   // Test the result
-   if (result == expected) {
-       println("Test passed!")
-   } else {
-       println("Test failed: Expected $expected but got $result")
-   }
+   val result2 = linkedListValues(x)
+   println("Test 2 Result: $result2")
+   
+   // Third test: q
+   val q = Node("q")
+   q.next = null
+   val result3 = linkedListValues(q)
+   println("Test 3 Result: $result3")
+   
+   // Fourth test: null
+   val result4 = linkedListValues(null)
+   println("Test 4 Result: $result4")
 }
