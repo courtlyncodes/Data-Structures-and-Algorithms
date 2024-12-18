@@ -1,50 +1,56 @@
 import java.util.*
 
 fun computeMinRefills(dist: Int, tank: Int, stops: IntArray): Int {
+    // Edge case: If there are no stops and the distance exceeds the tank's range
+    if (stops.isEmpty() && tank < dist) return -1
+
+    // Add a virtual stop at the destination for easier calculations
+    val allStops = stops + dist
+
     var currentPosition = 0
     var numRefills = 0
     var i = 0
-    var n = stops.size
+    val n = allStops.size
 
-    if (currentPosition + tank >= dist) {
-    return 0
-} 
-    
     while (currentPosition < dist) {
-        var farthestReachable: Int
+        var farthestReachable = currentPosition
 
-        if (i < n && stops[i] <= currentPosition + tank) {
-            while (i < n && stops[i] <= currentPosition + tank) {
-                i++
-            }
-            farthestReachable = if(i == 0) 0 else stops[i-1]
-        } 
-        else {
-            farthestReachable = currentPosition
+        // Find the farthest reachable stop within the current tank range
+        while (i < n && allStops[i] <= currentPosition + tank) {
+            farthestReachable = allStops[i]
+            i++
         }
 
-        if (farthestReachable == currentPosition) {
-            if (currentPosition + tank < dist) return -1
-            else break
-        } else {
+        // If no progress can be made, return -1
+        if (farthestReachable == currentPosition) return -1
+
+        // Update position and increment refill count if not at destination
+        if (farthestReachable < dist) {
             numRefills++
-            currentPosition = farthestReachable
         }
+
+        currentPosition = farthestReachable
     }
+
     return numRefills
 }
 
-fun main(args: Array<String>) {
-    val scanner = Scanner(System.`in`)
-    val dist = scanner.nextInt()
-    val tank = scanner.nextInt()
-    val n = scanner.nextInt()
-    val stops = IntArray(n) 
-    
-    for (i in 0 until n) {
-        stops[i] = scanner.nextInt()
-    }
+fun main() {
+    val dist = 950
+    val tank = 400
+    val stops = intArrayOf(200, 375, 550, 750)
+    val result = computeMinRefills(dist, tank, stops)
+    println(result) // Output: 2
 
-        println(computeMinRefills(dist, tank, stops))
-    }
+    val dist2 = 10
+    val tank2 = 3
+    val stops2 = intArrayOf(1, 2, 5, 9)
+    val result2 = computeMinRefills(dist2, tank2, stops2)
+    println(result2) // Output: -1
 
+    val dist3 = 200
+    val tank3 = 250
+    val stops3 = intArrayOf(100)
+    val result3 = computeMinRefills(dist3, tank3, stops3)
+    println(result3) // Output: 0
+}
