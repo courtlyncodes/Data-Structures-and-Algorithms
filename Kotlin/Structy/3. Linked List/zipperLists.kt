@@ -40,19 +40,19 @@ fun zipperLists(head1: Node?, head2: Node?): Node? {
     if (head1 == null) return head2
     if (head2 == null) return head1
 
-    var current1 = head1 // a -> b -> c
-    var current2 = head2 // x -> y -> z
+    var current1 = head1 // b -> c 
+    var current2 = head2 // x -> y -> z 
 
     // Keep track of the merged list's head
     val mergedHead = current1 // a -> b -> c
     current1 = current1.next // b -> c
 
-    var tail = mergedHead //   c 
+    var tail = mergedHead // a -> b -> c
 
     // Zipper the lists
     while (current1 != null && current2 != null) {
-        val next1 = current1.next //  b -> c
-        val next2 = current2.next // y -> z
+        val next1 = current1.next // c
+        val next2 = current2.next // y z
 
         // Attach nodes alternately
         tail.next = current2 // a -> x -> y -> z
@@ -60,7 +60,7 @@ fun zipperLists(head1: Node?, head2: Node?): Node? {
         tail.next = current1 // a -> x -> b -> c
         tail = tail.next!!
 
-        current1 = next1
+        current1 = next1 
         current2 = next2
     }
 
