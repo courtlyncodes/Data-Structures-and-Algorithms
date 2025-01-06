@@ -66,6 +66,9 @@ fun main() {
     val g = Node('g')
     val h = Node('h')
     val j = Node('j')
+
+    g.left = h
+    g.right = j 
     
     println(depthFirstValues(g))
     
