@@ -15,7 +15,7 @@ fun getNodeValue(head: Node?, index: Int): Any? {
             return current.value
         }
         current = current!!.next
-        count++
+        count++   
     }
     return null
 }
