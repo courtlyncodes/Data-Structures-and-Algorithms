@@ -30,6 +30,17 @@ fun depthFirstValues(root: Node?): CharArray {
         
 }
 
+// Recursively
+fun depthFirstValues(root: Node?): List<Char> {
+    val result = mutableListOf<Char>()
+    if (root == null) return result 
+
+    result.add(root.value)
+    result.addAll(depthFirstValues(root.left))
+    result.addAll(depthFirstValues(root.right))
+    return result
+}
+
 
 fun main() {
     // Test 1
