@@ -29,3 +29,15 @@ fun treeSum(root: Node?): Long {
     }
     return sum
 }
+
+// Write a function, treeSum, that takes in the root of a binary tree that contains number values. 
+// The function should return the total sum of all values in the tree.
+
+// Recursive
+
+fun treeSum(root: Node?): Long {
+    if (root == null) return 0
+    if (root.right == null && root.left == null) return root.value
+
+    return root.value + treeSum(root.right) + treeSum(root.left)
+}
