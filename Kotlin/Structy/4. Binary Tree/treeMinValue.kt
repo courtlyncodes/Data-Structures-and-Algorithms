@@ -1,4 +1,6 @@
-// Write a function, treeMinValue, that takes in the root of a binary tree that contains number values. 
+
+
+import treeIncludes// Write a function, treeMinValue, that takes in the root of a binary tree that contains number values. 
 // The function should return the minimum value within the tree.
 
 // You may assume that the input tree is non-empty.
@@ -26,7 +28,19 @@ fun treeMinValue(root: Node): Int {
    return min
 }
 
+// Write a function, treeMinValue, that takes in the root of a binary tree that contains number values. 
+// The function should return the minimum value within the tree.
 
+// You may assume that the input tree is non-empty.
+
+//Recursively
+
+fun treeMinValue(root: Node?): Int {
+    if (root == null) return Int.MAX_VALUE
+    if (root.right == null && root.left == null) return root.value
+
+    return minOf(root.value, treeMinValue(root.left), treeMinValue(root.right))
+}
 
 fun main() {
     // Test 1
