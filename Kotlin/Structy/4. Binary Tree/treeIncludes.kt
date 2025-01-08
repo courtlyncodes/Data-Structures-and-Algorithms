@@ -23,6 +23,17 @@ fun treeIncludes(root: Node?, target: Any): Boolean {
     return false
 }
 
+// Recursively
+// Write a function, treeIncludes, that takes in the root of a binary tree and a target value. 
+// The function should return a boolean indicating whether or not the value is contained in the tree.
+
+fun treeIncludes(root: Node?, target: Any): Boolean {
+  if (root.value == target) return true
+  if (root == null) return false
+
+  return treeIncludes(root.right, target) || treeIncludes(root.left, target)
+}
+
 
 
 fun main() {

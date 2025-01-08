@@ -11,7 +11,7 @@ class Node(val value: Int) {
 }
 
 fun maxPathSum(root: Node?): Int {    
-    if(root === null) return Int.MIN_VALUE
+  if(root === null) return Int.MIN_VALUE
   if(root.left === null && root.right === null) {
    return root.value
   } 

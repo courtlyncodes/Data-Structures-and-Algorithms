@@ -6,6 +6,30 @@ class Node(val value: Char) {
     var right: Node? = null
 }
 
+fun breadthFirstValues(root: Node?) {
+  var list = mutableListOf<Char>()
+
+  var q = ArrayDeque<Node>()
+  q.add(root)
+
+  if (root == null) return list
+
+  list.add(root.value)
+
+  while(q.isNotEmpty()) {
+    var curr = q.removeFirst()
+    curr.right?.let { 
+      q.add(it) 
+      list.add(it.value)
+    }
+
+    curr.left?.let { 
+      q.add(it)
+      list.add(it.value) 
+    }
+    return list
+  }
+}
 
 fun main() {
     // Test 1
