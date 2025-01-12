@@ -3,14 +3,12 @@
     // Input: A sorted array of integers (possibly with duplicates) and an integer q.
     // Output: Index of the first occurrence of q in the array or “−1”  if q does not appear in the array.
 
-    import kotlin.math.floor
-
     fun findDuplicates(arr: IntArray, n: Int): Int {
         var left = 0
-        var right = arr.size - 1
+        var right = (arr.size - 1)
         
         while(right >= left){
-            var mid = floor((right + left) / 2.0).toInt()
+            var mid = right + left / 2
         
         if(n == arr[mid]) {
             if(mid == 0 || arr[mid - 1] != arr[mid]) {

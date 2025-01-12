@@ -4,7 +4,7 @@ class Solution {
         var right = nums.size - 1
    	
     while(right >= left) {
-        var mid = floor((right + left) / 2.0).toInt()
+        var mid = right + left / 2
         
         if(target == nums[mid]) {
             return mid 
