@@ -3,7 +3,6 @@
 // Compute the minimum number of coins needed to change the given value into coins with denominations 1, 3, and 4.
 // Input: An integer money.
 // Output: The minimum number of coins with denominations 1, 3, and 4 that changes money.
-import kotlin.math.*
 
 var memo = hashMapOf<Int, Int>()
 
