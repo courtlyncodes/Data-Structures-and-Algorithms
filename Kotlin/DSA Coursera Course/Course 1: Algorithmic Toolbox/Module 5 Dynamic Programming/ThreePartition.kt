@@ -23,7 +23,10 @@ fun pirateLoot(list: IntArray): Int {
         
         if subset1.sum() + curr <= target {
             subset1.add(curr)
-          	if()
+          	if(backtrack(i + 1)){
+                return true
+            }
+            subset1.removeLast()
         }
 
     }
