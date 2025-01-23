@@ -2,7 +2,7 @@ class Node(val value: Any) {
     var next: Node? = null
 }
 
-// Remove the tail
+// Add a node to middle of list
 fun addAfter(head: Node?, target: Node?, key: Any?): Node? {
    if (head == null || target == null) return head
    
