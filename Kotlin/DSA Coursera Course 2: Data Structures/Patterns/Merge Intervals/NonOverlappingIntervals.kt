@@ -16,3 +16,23 @@ fun eraseOverlapIntervals(intervals: Array<IntArray>): Int {
     return result
 }
 
+// Greedy
+class Solution {
+    fun eraseOverlapIntervals(intervals: Array<IntArray>): Int {
+        intervals.sortBy { it[1] }
+
+        // [[1, 2], [2, 3], [1, 3], [3, 4]]
+
+        var count = 0
+        var lastInterval = intervals[0][1] // 2
+
+        for (interval in 1 until intervals.size) {
+            if (intervals[interval][0] < lastInterval) {
+                count++
+            } else {
+                lastInterval = intervals[interval][1]
+            }
+        }
+        return count
+    }
+}
