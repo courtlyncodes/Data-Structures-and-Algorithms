@@ -1,0 +1,74 @@
+// [42, 35, 18, 14, 29, 18, 12, 11, 13, 7]
+class Heap() {
+    private val heap = mutableListOf<Int>()
+    
+    fun siftUp(i: Int) {
+        val currIndex = i 
+        val currValue = heap[currIndex] 
+
+        while (currIndex > 0 && heap[(currIndex - 1) / 2] < currentValue) {
+            heap[currIndex] = heap[parent]
+            currIndex = parent
+        }
+        heap[currentIndex] = currValue
+    }
+// ----------------------------------------------
+// 3, 5, 6, 9
+// 0  1. 2. 3
+    fun siftDown(i: Int) {
+        var currIndex = i // 3
+        val currValue = heap[currIndex] // 9
+        
+        var leftChild = 2 * currIndex + 1 // 7
+        var rightChild = 2 * currIndex + 2 // 8
+        
+       while (leftChild < heap.size) {
+           // 3 < 4
+           var smallest = currIndex // 3
+           
+           if (leftChild < heap.size && heap[leftChild] < heap[smallest]) {
+                // 3 < 4 & 5 < 9
+               smallest = leftChild //3
+           }
+           if (rightChild < heap.size && heap[rightChild] < heap[smallest]) {
+               // 4 < 4 & 5 < 6
+               smallest = rightChild // 
+           }
+           if (currIndex != smallest) {
+               // 1 != 3
+               heap[currentIndex] = heap[smallest]
+               // 
+               heap[smallest] = currValue
+               
+               currentIndex = smallest
+           
+           leftChild = 2 * currentIndex + 1 // 7
+           rightChild = 2 * currentIndex + 2 // 8
+           } else {
+               break
+           }
+       }
+    }
+    
+// -------------------------------------------------
+    fun insert(value: Int) {
+        heap.add(value)
+        siftUp(heap.lastIndex)
+     }
+    
+    // -------------------------------------------------
+    fun peek(): Int {
+        return heap.first()
+    }
+    
+    fun extractMin(): Int {
+        if (heap.isEmpty()) throw NoSuchElementException("Heap is empty.")
+        
+        val result = heap.first()
+       	heap[0] = heap.last()
+        heap.removeLast()
+        siftDown(0)
+        
+        return result
+    }
+}
